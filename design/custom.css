@@ -1,0 +1,442 @@
+/* Custom styles for modals and form elements */
+
+/* Form controls */
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    border-radius: 0.375rem;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 0.5rem;
+    appearance: none;
+}
+
+.light-mode .form-control {
+    background-color: #ffffff;
+    border-color: rgba(5, 150, 105, 0.4);
+    color: #1e293b;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom dropdown styling */
+select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300ff9d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 255, 157, 0.3);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+select.form-control:hover {
+    border-color: rgba(0, 255, 157, 0.5);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 255, 157, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+}
+
+select.form-control:focus {
+    outline: none;
+    border-color: rgba(0, 255, 157, 0.7);
+    box-shadow: 0 0 0 2px rgba(0, 255, 157, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 255, 157, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.light-mode select.form-control {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23047857' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    border-color: rgba(5, 150, 105, 0.5);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
+}
+
+.light-mode select.form-control:hover {
+    border-color: rgba(5, 150, 105, 0.7);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.light-mode select.form-control:focus {
+    border-color: rgba(5, 150, 105, 0.8);
+    box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25), 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 15px rgba(5, 150, 105, 0.2);
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Dropdown options styling */
+select.form-control option {
+    background-color: #0f172a;
+    color: #e2e8f0;
+    padding: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+}
+
+select.form-control option:hover,
+select.form-control option:focus,
+select.form-control option:checked {
+    background-color: rgba(0, 255, 157, 0.1);
+    color: rgba(0, 255, 157, 1);
+}
+
+.light-mode select.form-control option {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-bottom: 1px solid rgba(5, 150, 105, 0.15);
+    padding: 12px;
+}
+
+.light-mode select.form-control option:hover,
+.light-mode select.form-control option:focus,
+.light-mode select.form-control option:checked {
+    background-color: rgba(5, 150, 105, 0.15);
+    color: #047857;
+    font-weight: 500;
+}
+
+/* Link editor styling */
+.link-editor {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.375rem;
+    border: 1px solid rgba(0, 255, 157, 0.1);
+}
+
+.light-mode .link-editor {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(5, 150, 105, 0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.link-editor .form-control {
+    margin-bottom: 0;
+}
+
+.link-editor .remove-link {
+    color: #ef4444;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.link-editor .remove-link:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Bookmark and history items */
+.bookmark-item, .history-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 255, 157, 0.1);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.light-mode .bookmark-item, .light-mode .history-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(5, 150, 105, 0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.bookmark-item:hover, .history-item:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 255, 157, 0.3);
+    transform: translateY(-2px);
+}
+
+.light-mode .bookmark-item:hover, .light-mode .history-item:hover {
+    background-color: #ffffff;
+    border-color: rgba(5, 150, 105, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bookmark-icon, .history-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #0ea5e9, #0284c7);
+    color: white;
+    flex-shrink: 0;
+}
+
+.bookmark-details, .history-details {
+    flex: 1;
+    overflow: hidden;
+}
+
+.bookmark-title, .history-title {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bookmark-url, .history-url {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.light-mode .bookmark-url, .light-mode .history-url {
+    color: #475569;
+}
+
+.history-time {
+    font-size: 0.75rem;
+    color: #64748b;
+    white-space: nowrap;
+}
+
+.light-mode .history-time {
+    color: #64748b;
+}
+
+/* Modal body scrolling */
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Scrollbar styling */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 157, 0.3);
+    border-radius: 3px;
+}
+
+.light-mode .modal-body::-webkit-scrollbar-thumb {
+    background: rgba(5, 150, 105, 0.5);
+    border-radius: 3px;
+}
+
+.light-mode .modal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+/* Form group spacing */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Add link button styling */
+.add-link-btn {
+    background-color: rgba(0, 255, 157, 0.05);
+    color: #10b981;
+    border: 1px dashed rgba(0, 255, 157, 0.3);
+    transition: all 0.2s;
+}
+
+.add-link-btn:hover {
+    background-color: rgba(0, 255, 157, 0.2);
+    border-color: rgba(0, 255, 157, 0.5);
+}
+
+.light-mode .add-link-btn {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: #047857;
+    border-color: rgba(5, 150, 105, 0.3);
+    font-weight: 500;
+}
+
+.light-mode .add-link-btn:hover {
+    background-color: rgba(5, 150, 105, 0.25);
+    border-color: rgba(5, 150, 105, 0.6);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Terminal input styling for light mode */
+.light-mode #terminal-input {
+    color: #0f172a;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(5, 150, 105, 0.3);
+}
+
+.terminal-body {
+    height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.light-mode .terminal-body {
+    color: #0f172a;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Terminal scrollable output */
+#terminal-output {
+    height: 178px;
+    max-height: 178px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding-right: 5px;
+}
+
+/* Custom scrollbar for terminal */
+#terminal-output::-webkit-scrollbar {
+    width: 6px;
+}
+
+#terminal-output::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+#terminal-output::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+#terminal-output::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.light-mode #terminal-output::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode #terminal-output::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.light-mode #terminal-output::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Quick link styling for light mode */
+.light-mode .quick-link .bg-gradient-to-br {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .quick-link i {
+    color: #1e293b;
+}
+
+.light-mode .quick-link .terminal-font {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* Game card styling for light and dark mode */
+.game-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 184, 255, 0.3);
+}
+
+.light-mode .game-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .game-card:hover {
+    border-color: rgba(5, 150, 105, 0.6);
+    box-shadow: 0 10px 15px rgba(5, 150, 105, 0.2);
+}
+
+.light-mode .game-card .terminal-font {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* Game card icon backgrounds for light mode */
+.light-mode .game-card .bg-gradient-to-br.from-gray-800.to-gray-900 {
+    background: linear-gradient(to bottom right, #f1f5f9, #e2e8f0);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.light-mode .game-card .bg-gradient-to-br.from-purple-800.to-purple-900 {
+    background: linear-gradient(to bottom right, #f3e8ff, #e9d5ff);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.light-mode .game-card .bg-gradient-to-br.from-blue-800.to-blue-900 {
+    background: linear-gradient(to bottom right, #e0f2fe, #bae6fd);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+.light-mode .game-card .bg-gradient-to-br.from-green-800.to-green-900 {
+    background: linear-gradient(to bottom right, #dcfce7, #bbf7d0);
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+/* Game card icon colors for light mode */
+.light-mode .game-card .text-amber-500 {
+    color: #b45309;
+}
+
+.light-mode .game-card .text-purple-300 {
+    color: #7e22ce;
+}
+
+.light-mode .game-card .text-blue-300 {
+    color: #0369a1;
+}
+
+.light-mode .game-card .text-green-300 {
+    color: #047857;
+}
+
+.display{
+    font-size: 1.125rem;
+}
+
+.icon-display::after {
+    content: " ";
+    display: block;
+    height: 1px;
+    margin-top: 0.5rem;
+}
+
+
+.icon-display:hover {
+    background-color: rgba(0, 255, 157, 0.3);
+    box-shadow: 0 0 0 1px rgba(0, 255, 157, 0.2), 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 255, 157, 0.3);
+}
+
+.light-mode .icon-display:hover {
+    background-color: rgba(5, 150, 105, 0.15);
+    box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    font-size: medium;
+}

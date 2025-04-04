@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberTab - Modern Terminal New Tab</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+    <link href="date-contrast.css" rel="stylesheet">
+    <link href="quick-link-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="icon128.png">
+</head>
+<body class="text-white">
+    <div class="container mx-auto px-4 h-full flex flex-col">
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center pt-6 fade-in">
+            <!-- Weather Widget -->
+            <div id="weather-widget" class="bg-black bg-opacity-20 backdrop-blur-md rounded-full px-4 py-2 flex items-center space-x-2">
+                <i class="fas fa-location-arrow text-blue-300"></i>
+                <span id="location" class="font-medium terminal-font">Detecting location...</span>
+                <div id="weather-icon" class="weather-icon text-yellow-300">
+                    <i class="fas fa-spinner fa-spin text-xl"></i>
+                </div>
+                <span id="temperature" class="font-bold">--°F</span>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="flex display space-x-3">
+                <button id="settings-btn" class="bg-black icon-display bg-opacity-20 backdrop-blur-md rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-30 transition" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button id="bookmarks-btn" class="bg-black icon-display bg-opacity-20 backdrop-blur-md rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-30 transition" title="Bookmarks">
+                    <i class="fas fa-bookmark"></i>
+                </button>
+                <button id="history-btn" class="bg-black icon-display bg-opacity-20 backdrop-blur-md rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-30 transition" title="History">
+                    <i class="fas fa-history"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-grow flex flex-col items-center justify-center -mt-10">
+            <!-- Time Display -->
+            <div class="time text-7xl font-light mb-2 slide-up glow-text" style="color: var(--primary);">
+                <span id="hours">00</span>:<span id="minutes">00</span>
+            </div>
+            
+            <!-- Date Display -->
+            <div class="text-lg display text-gray-300 mb-8 slide-up terminal-font" id="date">
+                Monday, January 1, 2023
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="w-full max-w-2xl mb-10 slide-up">
+                <div class="search-bar bg-black bg-opacity-20 backdrop-blur-md rounded-full overflow-hidden">
+                    <form id="search-form" class="flex items-center">
+                        <div class="pl-5 text-gray-400">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="search" 
+                            placeholder="Type a command or search..." 
+                            class="w-full bg-transparent border-0 focus:ring-0 placeholder-gray-500 px-4 py-4 outline-none terminal-font"
+                            autofocus
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                        <button type="submit" class="px-5 text-gray-400 hover:text-white">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="text-xs text-gray-500 mt-2 text-center terminal-font">
+                    Try: <span class="text-green-400 cursor-pointer command-link" data-command="help">help</span>, 
+                    <span class="text-blue-400 cursor-pointer command-link" data-command="games">games</span>, 
+                    <span class="text-purple-400 cursor-pointer command-link" data-command="links">links</span>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="flex mb-6 space-x-6 slide-up">
+                <button class="tab-button active px-4 py-2 terminal-font text-lg" data-tab="quick-links">
+                    <i class="fas fa-rocket mr-2"></i> Quick Links
+                </button>
+                <button class="tab-button px-4 py-2 terminal-font text-lg" data-tab="terminal">
+                    <i class="fas fa-terminal mr-2"></i> Terminal
+                </button>
+                <button class="tab-button px-4 py-2 terminal-font text-lg" data-tab="games">
+                    <i class="fas fa-gamepad mr-2"></i> Games
+                </button>
+            </div>
+            
+            <!-- Quick Links Tab -->
+            <div id="quick-links-tab" class="w-full max-w-4xl">
+                <div id="quick-links-container" class="grid grid-cols-5 gap-4">
+                    <!-- Quick links will be loaded from localStorage -->
+                </div>
+            </div>
+            
+            <!-- Terminal Tab -->
+            <div id="terminal-tab" class="terminal w-full max-w-4xl hidden">
+                <div class="terminal-header rounded-t-lg px-4 py-3 flex items-center">
+                    <div class="flex space-x-2 mr-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="text-sm terminal-font">pantaprabin30@gmail.com</div>
+                </div>
+                <div class="terminal-body rounded-b-lg p-4 terminal-font text-sm">
+                    <div class="mb-4">
+                        <div class="text-green-400">Welcome to CyberTab Terminal</div>
+                        <div class="text-gray-400">Type 'help' to see available commands</div>
+                    </div>
+                    <div id="terminal-output">
+                        <!-- Terminal output will be inserted here -->
+                    </div>
+                    <div class="flex items-center mt-2">
+                        <span class="text-green-400 mr-2">$</span>
+                        <input type="text" id="terminal-input" class="bg-transparent border-0 focus:ring-0 w-full text-white outline-none" autocomplete="off" spellcheck="false">
+                        <span class="cursor ml-1">|</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Games Tab -->
+            <div id="games-tab" class="w-full max-w-4xl hidden">
+                <div class="grid grid-cols-4 gap-4">
+                    <a href="https://chess.com" class="game-card flex flex-col items-center p-4 rounded-xl">
+                        <div class="w-full h-32 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fas fa-chess-knight text-4xl text-amber-500"></i>
+                        </div>
+                        <span class="text-sm terminal-font">Chess</span>
+                    </a>
+                    <a href="https://tetris.com" class="game-card flex flex-col items-center p-4 rounded-xl">
+                        <div class="w-full h-32 bg-gradient-to-br from-purple-800 to-purple-900 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fas fa-th text-4xl text-purple-300"></i>
+                        </div>
+                        <span class="text-sm terminal-font">Tetris</span>
+                    </a>
+                    <a href="https://sudoku.com" class="game-card flex flex-col items-center p-4 rounded-xl">
+                        <div class="w-full h-32 bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fas fa-border-all text-4xl text-blue-300"></i>
+                        </div>
+                        <span class="text-sm terminal-font">Sudoku</span>
+                    </a>
+                    <a href="https://wordle.com" class="game-card flex flex-col items-center p-4 rounded-xl">
+                        <div class="w-full h-32 bg-gradient-to-br from-green-800 to-green-900 rounded-lg flex items-center justify-center mb-3">
+                            <i class="fas fa-font text-4xl text-green-300"></i>
+                        </div>
+                        <span class="text-sm terminal-font">Wordle</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="pb-6 text-center text-gray-500 text-sm fade-in terminal-font">
+            <p>CyberTab v1.1 | <span id="greeting">Good morning</span>, User! | <span id="quote">Loading quote...</span></p>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal" data-visible="false">
+        <div class="modal-content bg-opacity-95">
+            <div class="modal-header">
+                <h3 class="text-2xl font-bold">Settings</h3>
+                <button class="close-modal text-2xl">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group mb-6">
+                    <label for="theme-select" class="text-lg mb-2 block">Theme</label>
+                    <div class="relative">
+                        <select id="theme-select" class="form-control text-lg p-3">
+                            <option value="dark">Dark Mode</option>
+                            <option value="light">Light Mode</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group mb-6">
+                    <label class="text-lg mb-2 block">Quick Links</label>
+                    <div id="link-editors" class="space-y-4">
+                        <!-- Link editors will be added here -->
+                    </div>
+                    <button id="add-link-btn" class="btn add-link-btn w-full mt-4 text-lg p-3">
+                        <i class="fas fa-plus mr-2"></i> Add Link
+                    </button>
+                </div>
+                <button id="save-settings" class="btn btn-primary w-full mt-6 text-lg p-3">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bookmarks Modal -->
+    <div id="bookmarks-modal" class="modal" data-visible="false">
+        <div class="modal-content bg-opacity-95">
+            <div class="modal-header">
+                <h3 class="text-2xl font-bold">Bookmarks</h3>
+                <button class="close-modal text-2xl">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="bookmarks-list" class="text-lg">
+                    <div class="no-items text-center p-8">
+                        <i class="fas fa-spinner fa-spin text-3xl mb-4"></i>
+                        <p class="text-lg">Loading bookmarks...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="history-modal" class="modal" data-visible="false">
+        <div class="modal-content bg-opacity-95">
+            <div class="modal-header">
+                <h3 class="text-2xl font-bold">History</h3>
+                <button class="close-modal text-2xl">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="history-list" class="text-lg">
+                    <div class="no-items text-center p-8">
+                        <i class="fas fa-spinner fa-spin text-3xl mb-4"></i>
+                        <p class="text-lg">Loading history...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

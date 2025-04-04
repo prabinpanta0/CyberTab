@@ -1,0 +1,13 @@
+/* Custom styles to increase date and time contrast */
+
+/* Increase contrast for date text in light mode */
+body.light-mode #date {
+    color: #047857; /* Darker green color for better contrast */
+    font-weight: 500; /* Slightly bolder text */
+}
+
+/* Enhance time display contrast in light mode */
+body.light-mode .time {
+    color: #047857; /* Darker green that matches the glow */
+    font-weight: 400; /* Ensure good readability */
+}

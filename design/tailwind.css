@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --primary: #00ff9d;
+    --secondary: #00b8ff;
+    --terminal-bg: rgba(0, 10, 18, 0.8);
+  }
+
+  body {
+    @apply font-['Inter'] bg-gradient-to-br from-[#0a0a1a] to-[#00111a] h-screen overflow-hidden text-[#e0e0e0] transition-all duration-300;
+  }
+
+  body.light-mode {
+    @apply from-[#f8fafc] to-[#f1f5f9] text-[#1e293b];
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded;
+  }
+  .btn-primary {
+    @apply bg-green-500 text-black hover:bg-green-600 transition-colors;
+  }
+  .modal {
+    @apply fixed inset-0 z-50 hidden;
+  }
+
+  .modal[data-visible="true"] {
+    @apply flex items-center justify-center bg-black bg-opacity-50;
+  }
+
+  .modal-content {
+    @apply bg-[var(--terminal-bg)] border border-[rgba(0,255,157,0.2)] rounded-lg w-4/5 max-w-lg p-5 shadow-lg;
+  }
+
+  .light-mode .modal-content {
+    @apply bg-white border-[rgba(5,150,105,0.2)] text-[#1e293b];
+  }
+
+  .modal-header {
+    @apply flex justify-between items-center mb-4 pb-2 border-b border-[rgba(0,255,157,0.2)];
+  }
+
+  .light-mode .modal-header {
+    @apply border-[rgba(5,150,105,0.2)];
+  }
+
+  .close-modal {
+    @apply text-2xl text-gray-400 hover:text-white cursor-pointer;
+  }
+
+  .light-mode .close-modal {
+    @apply text-gray-600 hover:text-gray-900;
+  }
+
+  .tab-button {
+    @apply px-4 py-2 border-b-2 border-transparent transition-colors duration-200 terminal-font;
+  }
+
+  .tab-button.active {
+    @apply border-[var(--primary)] text-[var(--primary)];
+  }
+
+  .light-mode .tab-button.active {
+    @apply border-emerald-600 text-emerald-600;
+  }
+
+  .terminal-font {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .modal-btn {
+    @apply text-2xl p-3 rounded-full transition-all duration-300 hover:bg-[rgba(0,255,157,0.1)] hover:text-[var(--primary)] hover:scale-110;
+  }
+
+  .light-mode .modal-btn {
+    @apply hover:bg-emerald-100 hover:text-emerald-600;
+  }
+  .search-bar {
+    @apply shadow-[0_0_20px_rgba(0,255,157,0.2)] transition-all duration-300 border border-[rgba(0,255,157,0.3)] bg-black bg-opacity-20 backdrop-blur-md;
+  }
+  .light-mode .search-bar {
+    @apply bg-white bg-opacity-90 shadow-[0_0_20px_rgba(0,180,120,0.1)] border-[rgba(0,180,120,0.2)] text-[#1e293b];
+  }
+  .quick-link {
+    @apply transition-all duration-300 border border-[rgba(0,255,157,0.1)] bg-black bg-opacity-10 backdrop-blur-sm hover:transform hover:-translate-y-1 hover:border-[#00ff9d] hover:shadow-[0_5px_15px_rgba(0,255,157,0.1)];
+  }
+  .light-mode .quick-link {
+    @apply bg-white bg-opacity-90 text-[#1e293b] border-[rgba(0,0,0,0.05)] shadow-sm hover:border-[rgba(0,180,120,0.3)] hover:shadow-[0_5px_15px_rgba(0,180,120,0.15)];
+  }
+  .time {
+    @apply text-shadow-glow;
+  }
+  .terminal {
+    @apply bg-[var(--terminal-bg)] border border-[rgba(0,255,157,0.2)] rounded-lg shadow-[0_0_30px_rgba(0,10,18,0.5)];
+  }
+  .light-mode .terminal {
+    @apply bg-white bg-opacity-95 border-[rgba(5,150,105,0.2)] shadow-[0_0_30px_rgba(0,0,0,0.1)] text-[#1e293b];
+  }
+  .game-card {
+    @apply bg-[rgba(0,20,30,0.5)] border border-[rgba(0,184,255,0.2)] transition-all duration-300 backdrop-blur-sm hover:transform hover:-translate-y-1 hover:border-[var(--secondary)] hover:shadow-[0_10px_20px_rgba(0,184,255,0.2)];
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+  }
+  .light-mode .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(5, 150, 105, 0.5);
+  }
+}

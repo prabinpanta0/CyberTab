@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "CyberTab - Modern Terminal New Tab",
+  "version": "1.0",
+  "description": "Replace your new tab page with a modern, terminal-inspired dashboard",
+  "permissions": [
+    "geolocation",
+    "storage",
+    "bookmarks",
+    "history"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.openweathermap.org https://nominatim.openstreetmap.org"
+  },
+  "web_accessible_resources": [{
+    "resources": ["design/*"],
+    "matches": ["<all_urls>"]
+  }],
+  "chrome_url_overrides": {
+    "newtab": "design/index.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

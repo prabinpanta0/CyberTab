@@ -1,0 +1,25 @@
+/* Quick Link Icon Size Enhancement */
+
+/* Increase the icon container size */
+.quick-link .bg-gradient-to-br {
+    width: 4rem !important; /* Reduced from 16rem to a more appropriate size */
+    height: 4rem !important; /* Reduced from 16rem to a more appropriate size */
+    margin-bottom: 0.5rem !important; /* Slightly reduced margin */
+}
+
+/* Increase the icon font size */
+.quick-link i {
+    font-size: 1.75rem !important; /* Larger icon size */
+}
+
+/* Adjust text size for better proportion */
+.quick-link .terminal-font {
+    font-size: 0.95rem !important; /* Slightly larger text */
+    margin-top: 0.25rem !important;
+}
+
+/* Light mode adjustments */
+.light-mode .quick-link .bg-gradient-to-br {
+    background: none !important;
+    box-shadow: none !important;
+}
